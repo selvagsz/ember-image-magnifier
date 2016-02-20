@@ -1,10 +1,12 @@
 .image-magnifier {
   display: inline-block;
   position: relative;
+  overflow: hidden;
 }
 
-.image-magnifier:hover img {
-  opacity: 0.5;
+.image-magnifier img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .magnifier-lens {
@@ -14,8 +16,7 @@
   border: 1px solid #ddd;
   overflow: hidden;
   cursor: move;
-  width: 50px;
-  height: 75px;
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .magnifier-preview {

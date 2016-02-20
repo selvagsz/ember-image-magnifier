@@ -6,11 +6,13 @@ export default TetherComponent.extend({
   layout,
   classNames: ['magnifier-preview'],
 
-  imageDimensions: Ember.computed('mouseX', 'mouseY', {
+  imageDimensions: Ember.computed('mouseX', 'mouseY', 'srcImgWidth', 'srcImgHeight', 'zoom', {
     get() {
       return `
-        left: -${this.get('mouseX')}px;
-        top: -${this.get('mouseY')}px;
+        width: ${this.get('zoom') * this.get('srcImgWidth')}px;
+        height: ${this.get('zoom') * this.get('srcImgHeight')}px;
+        left: ${- (this.get('zoom') * this.get('mouseX'))}px;
+        top: ${- (this.get('zoom') * this.get('mouseY'))}px;
       `;
     }
   })

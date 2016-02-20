@@ -1,16 +1,31 @@
 import Ember from 'ember';
 import layout from '../templates/components/image-magnifier';
+import computedStyle from 'ember-computed-style';
 
-export default Ember.Component.extend({
+const { Component, computed } = Ember;
+
+export default Component.extend({
   layout,
   classNames: ['image-magnifier'],
   magnifierLensComponent: 'magnifier-lens',
+  attributeBindings: ['style'],
+  style: computedStyle('magnifierDimensions'),
+  zoom: 5,
+
+  magnifierDimensions: computed('width', 'height', {
+    get() {
+      return {
+        width: this.getWithDefault('width', 200),
+        height: this.getWithDefault('height', 250)
+      };
+    }
+  }),
 
   onImgLoad() {
-    Ember.run.later(() => {
+    Ember.run.next(() => {
       this.setProperties({
-        srcImgWidth: this.$('img')[0].width,
-        srcImgHeight: this.$('img')[0].height,
+        srcImgWidth: this.element.clientWidth,
+        srcImgHeight: this.element.clientHeight,
         imageLoaded: true
       });
     });
@@ -31,6 +46,6 @@ export default Ember.Component.extend({
   },
 
   mouseLeave() {
-    this.set('showPreview', false);
+    // this.set('showPreview', false);
   }
 });
