@@ -2,6 +2,17 @@
 
 This README outlines the details of collaborating on this Ember addon.
 
+## Usage
+
+```handlebars
+
+  {{image-magnifier
+    src="http://lorempixel.com/image_output/nightlife-q-c-200-200-8.jpg"
+    preview-src="http://lorempixel.com/image_output/nightlife-q-c-500-500-8.jpg"}}
+
+```
+
+
 ## Installation
 
 * `git clone` this repository

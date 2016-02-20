@@ -1,0 +1,15 @@
+{{async-image
+  src=src
+  alt="Minified Image"
+  onload=(action onImgLoad)}}
+
+{{#if imageLoaded}}
+  {{component magnifierLensComponent
+    src=src
+    srcImgWidth=srcImgWidth
+    srcImgHeight=srcImgHeight
+    mouseX=mouseX
+    mouseY=mouseY}}
+{{else}}
+  Loading...
+{{/if}}

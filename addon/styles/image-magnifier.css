@@ -1,0 +1,19 @@
+.image-magnifier {
+  display: inline-block;
+  position: relative;
+}
+
+.image-magnifier:hover img {
+  opacity: 0.5;
+}
+
+.magnifier-lens {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  cursor: move;
+  width: 50px;
+  height: 75px;
+}

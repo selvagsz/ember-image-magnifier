@@ -1,0 +1,1 @@
+export { default } from 'ember-image-magnifier/components/image-magnifier';
