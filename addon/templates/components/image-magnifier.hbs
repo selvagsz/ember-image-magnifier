@@ -4,12 +4,24 @@
   onload=(action onImgLoad)}}
 
 {{#if imageLoaded}}
-  {{component magnifierLensComponent
-    src=src
-    srcImgWidth=srcImgWidth
-    srcImgHeight=srcImgHeight
-    mouseX=mouseX
-    mouseY=mouseY}}
+  {{#if showPreview}}
+    {{component magnifierLensComponent
+      src=src
+      srcImgWidth=srcImgWidth
+      srcImgHeight=srcImgHeight
+      mouseX=mouseX
+      mouseY=mouseY}}
+  {{/if}}
 {{else}}
   Loading...
+{{/if}}
+
+{{#if showPreview}}
+  {{magnifier-preview
+    target=this.element
+    targetAttachment="top right"
+    attachment="top left"
+    src=preview-src
+    mouseX=mouseX
+    mouseY=mouseY}}
 {{/if}}

@@ -17,14 +17,20 @@ export default Ember.Component.extend({
   },
 
   mouseMove(event) {
-    // debugger;
     let target = event.currentTarget;
     let mouseX = event.clientX - target.offsetLeft;
     let mouseY = event.clientY - target.offsetTop;
-    console.log(event.clientX, event.clientY, mouseX, mouseY);
     this.setProperties({
       mouseX,
       mouseY
     });
+  },
+
+  mouseEnter() {
+    this.set('showPreview', true);
+  },
+
+  mouseLeave() {
+    this.set('showPreview', false);
   }
 });

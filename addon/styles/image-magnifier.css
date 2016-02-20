@@ -17,3 +17,15 @@
   width: 50px;
   height: 75px;
 }
+
+.magnifier-preview {
+  width: 300px;
+  height: 300px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  overflow: hidden;
+  position: relative;
+}
+
+.magnifier-preview img {
+  position: absolute;
+}
