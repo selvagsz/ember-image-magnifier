@@ -46,6 +46,6 @@ export default Component.extend({
   },
 
   mouseLeave() {
-    // this.set('showPreview', false);
+    this.set('showPreview', false);
   }
 });
