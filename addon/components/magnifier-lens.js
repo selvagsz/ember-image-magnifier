@@ -19,8 +19,17 @@ export default Component.extend({
       let $width = $element.clientWidth;
       let $height = $element.clientHeight;
 
-      top = (mouseY + $height) > this.get('srcImgHeight') ? (this.get('srcImgHeight') - $height) : mouseY;
-      left = (mouseX + $width) > this.get('srcImgWidth') ? (this.get('srcImgWidth') - $width) : mouseX;
+      if ((mouseX + $width/2) > this.get('srcImgHeight')) {
+        left = this.get('srcImgWidth') - $width;
+      } else {
+        left = ((mouseX - $width/2) < 0) ? 0 : (mouseX - $width/2);
+      }
+
+      if ((mouseY + $height/2) > this.get('srcImgHeight')) {
+        top = this.get('srcImgHeight') - $height;
+      } else {
+        top = ((mouseY - $height/2) < 0) ? 0 : (mouseY - $height/2);
+      }
     }
 
     return {
