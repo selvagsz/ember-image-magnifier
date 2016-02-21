@@ -5,7 +5,7 @@
 
 {{#if imageLoaded}}
   {{#if showPreview}}
-    {{component magnifierLensComponent
+    {{magnifier-lens
       src=src
       srcImgWidth=srcImgWidth
       srcImgHeight=srcImgHeight
@@ -18,7 +18,7 @@
 
 {{#if showPreview}}
   {{magnifier-preview
-    target=this.element
+    target=(concat "#" this.elementId)
     targetAttachment="top right"
     attachment="top left"
     src=preview-src

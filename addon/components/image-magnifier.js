@@ -7,7 +7,6 @@ const { Component, computed } = Ember;
 export default Component.extend({
   layout,
   classNames: ['image-magnifier'],
-  magnifierLensComponent: 'magnifier-lens',
   attributeBindings: ['style'],
   style: computedStyle('magnifierDimensions'),
   zoom: 5,
@@ -31,21 +30,55 @@ export default Component.extend({
     });
   },
 
-  mouseMove(event) {
+  showImagePreview() {
+    this.set('showPreview', true);
+  },
+
+  hideImagePreview() {
+    this.set('showPreview', false);
+  },
+
+  setMouseCoordinates(event) {
     let target = event.currentTarget;
-    let mouseX = event.clientX - target.offsetLeft;
-    let mouseY = event.clientY - target.offsetTop;
+    let clientX, clientY;
+
+    if (event.type === 'touchmove') {
+      clientX = event.originalEvent.touches[0].clientX;
+      clientY = event.originalEvent.touches[0].clientY;
+    } else {
+      clientX = event.clientX;
+      clientY = event.clientY;
+    }
+
+    let mouseX = clientX - target.offsetLeft;
+    let mouseY = clientY - target.offsetTop;
     this.setProperties({
       mouseX,
       mouseY
     });
   },
 
+  mouseMove(event) {
+    this.setMouseCoordinates(event);
+  },
+
+  touchMove(event) {
+    this.setMouseCoordinates(event);
+  },
+
   mouseEnter() {
-    this.set('showPreview', true);
+    this.showImagePreview();
   },
 
   mouseLeave() {
-    this.set('showPreview', false);
+    this.hideImagePreview();
+  },
+
+  touchStart() {
+    this.showImagePreview();
+  },
+
+  touchEnd() {
+    this.hideImagePreview();
   }
 });
