@@ -7,8 +7,7 @@
   {{#if showLens}}
     {{magnifier-lens
       src=src
-      srcImgWidth=srcImgWidth
-      srcImgHeight=srcImgHeight
+      magnifierDimensions=magnifierDimensions
       mouseX=mouseX
       mouseY=mouseY
       on-lens-insert=(action onLensInsert)}}
@@ -25,8 +24,7 @@
     src=preview-src
     zoom=zoom
     lensDimensions=lensDimensions
-    srcImgWidth=srcImgWidth
-    srcImgHeight=srcImgHeight
+    magnifierDimensions=magnifierDimensions
     mouseX=mouseX
     mouseY=mouseY}}
 {{/if}}

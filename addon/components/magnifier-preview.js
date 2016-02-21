@@ -6,11 +6,11 @@ export default TetherComponent.extend({
   layout,
   classNames: ['magnifier-preview'],
 
-  imageDimensions: Ember.computed('mouseX', 'mouseY', 'srcImgWidth', 'srcImgHeight', 'zoom', 'lensDimensions.{width,height}', {
+  imageDimensions: Ember.computed('mouseX', 'mouseY', 'zoom', 'magnifierDimensions.{width,height}', 'lensDimensions.{width,height}', {
     get() {
       let zoomLevel = this.get('zoom');
-      let zoomedWidth = zoomLevel * this.get('srcImgWidth');
-      let zoomedHeight = zoomLevel * this.get('srcImgHeight');
+      let zoomedWidth = zoomLevel * this.get('magnifierDimensions.width');
+      let zoomedHeight = zoomLevel * this.get('magnifierDimensions.height');
       let leftPos = - zoomLevel * (this.get('mouseX') - this.get('lensDimensions.width')/2);
       let topPos = - zoomLevel * (this.get('mouseY') - this.get('lensDimensions.height')/2);
 

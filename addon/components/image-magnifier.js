@@ -35,11 +35,7 @@ export default Component.extend({
 
   onImgLoad() {
     Ember.run.next(() => {
-      this.setProperties({
-        srcImgWidth: this.element.clientWidth,
-        srcImgHeight: this.element.clientHeight,
-        imageLoaded: true
-      });
+      this.set('imageLoaded', true);
     });
   },
 

@@ -10,16 +10,16 @@ export default Component.extend({
   attributeBindings: ['style'],
   style: computedStyle('lensDimensions', 'lensPos'),
 
-  lensDimensions: computed('srcImgWidth', 'srcImgHeight', {
+  lensDimensions: computed('magnifierDimensions.{width,height}', {
     get() {
       return {
-        width: 0.25 * this.get('srcImgWidth'),
-        height: 0.3 * this.get('srcImgHeight')
+        width: 0.25 * this.get('magnifierDimensions.width'),
+        height: 0.3 * this.get('magnifierDimensions.height')
       };
     }
   }),
 
-  lensPos: computed('mouseX', 'mouseY', 'srcImgWidth', 'srcImgHeight', {
+  lensPos: computed('mouseX', 'mouseY', 'magnifierDimensions.{width,height}', {
     get() {
       let mouseX = this.getWithDefault('mouseX', 0);
       let mouseY = this.getWithDefault('mouseY', 0);
@@ -31,14 +31,14 @@ export default Component.extend({
         let $width = $element.clientWidth;
         let $height = $element.clientHeight;
 
-        if ((mouseX + $width/2) > this.get('srcImgHeight')) {
-          left = this.get('srcImgWidth') - $width;
+        if ((mouseX + $width/2) > this.get('magnifierDimensions.width')) {
+          left = this.get('magnifierDimensions.width') - $width;
         } else {
           left = ((mouseX - $width/2) < 0) ? 0 : (mouseX - $width/2);
         }
 
-        if ((mouseY + $height/2) > this.get('srcImgHeight')) {
-          top = this.get('srcImgHeight') - $height;
+        if ((mouseY + $height/2) > this.get('magnifierDimensions.height')) {
+          top = this.get('magnifierDimensions.height') - $height;
         } else {
           top = ((mouseY - $height/2) < 0) ? 0 : (mouseY - $height/2);
         }
