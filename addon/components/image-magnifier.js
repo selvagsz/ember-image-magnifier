@@ -64,6 +64,7 @@ export default Component.extend({
 
   touchMove(event) {
     this.setMouseCoordinates(event);
+    event.preventDefault(); // prevents scrolling during the touch action
   },
 
   mouseEnter() {

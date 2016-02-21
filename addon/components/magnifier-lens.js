@@ -8,7 +8,7 @@ export default Component.extend({
   layout,
   classNames: ['magnifier-lens'],
   attributeBindings: ['style'],
-  style: computedStyle('backgroundImage', 'backgroundImagePos', 'lensDimensions', 'lensPos'),
+  style: computedStyle('lensDimensions', 'lensPos'),
 
   lensDimensions: computed('srcImgWidth', 'srcImgHeight', {
     get() {
@@ -47,23 +47,6 @@ export default Component.extend({
       return {
         top,
         left
-      };
-    }
-  }),
-
-  backgroundImage: computed('src', {
-    get() {
-      return {
-        // background: `url(${this.get('src')}) no-repeat`,
-      };
-    }
-  }),
-
-  backgroundImagePos: computed('lensPos', {
-    get() {
-      let { top, left } = this.get('lensPos');
-      return {
-        'background-position': `-${left}px -${top}px`
       };
     }
   })
