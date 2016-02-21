@@ -4,25 +4,27 @@
   onload=(action onImgLoad)}}
 
 {{#if imageLoaded}}
-  {{#if showPreview}}
+  {{#if showLens}}
     {{magnifier-lens
       src=src
       srcImgWidth=srcImgWidth
       srcImgHeight=srcImgHeight
       mouseX=mouseX
-      mouseY=mouseY}}
+      mouseY=mouseY
+      on-lens-insert=(action onLensInsert)}}
   {{/if}}
-{{else}}
-  Loading...
 {{/if}}
 
 {{#if showPreview}}
   {{magnifier-preview
-    target=(concat "#" this.elementId)
-    targetAttachment="top right"
-    attachment="top left"
+    target=_previewerTarget
+    attachment=previewerAttachment
+    targetAttachment=previewerTargetAttachment
+    offset=previewerOffset
+    targetOffset=previewerTargetOffset
     src=preview-src
     zoom=zoom
+    lensDimensions=lensDimensions
     srcImgWidth=srcImgWidth
     srcImgHeight=srcImgHeight
     mouseX=mouseX

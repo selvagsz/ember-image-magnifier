@@ -10,6 +10,19 @@ export default Component.extend({
   attributeBindings: ['style'],
   style: computedStyle('magnifierDimensions'),
   zoom: 5,
+  previewerAttachment: 'top left',
+  previewerTargetAttachment: 'top right',
+  previewerTargetOffset: '0 0',
+  attachToLens: false,
+  _previewerTarget: computed('attachToLens', 'lensId', {
+    get() {
+      if (this.get('attachToLens')) {
+        return `#${this.get('lensId')}`;
+      }
+
+      return this.get('previewerTarget') || `#${this.elementId}`;
+    }
+  }),
 
   magnifierDimensions: computed('width', 'height', {
     get() {
@@ -28,6 +41,22 @@ export default Component.extend({
         imageLoaded: true
       });
     });
+  },
+
+  onLensInsert(lensId, lensDimensions) {
+    this.setProperties({
+      lensId: `#${lensId}`,
+      lensDimensions
+    });
+    this.showImagePreview();
+  },
+
+  showMagnifierLens() {
+    this.set('showLens', true);
+  },
+
+  hideMagnifierLens() {
+    this.set('showLens', false);
   },
 
   showImagePreview() {
@@ -68,18 +97,20 @@ export default Component.extend({
   },
 
   mouseEnter() {
-    this.showImagePreview();
+    this.showMagnifierLens();
   },
 
   mouseLeave() {
+    this.hideMagnifierLens();
     this.hideImagePreview();
   },
 
   touchStart() {
-    this.showImagePreview();
+    this.showMagnifierLens();
   },
 
   touchEnd() {
+    this.hideMagnifierLens();
     this.hideImagePreview();
   }
 });

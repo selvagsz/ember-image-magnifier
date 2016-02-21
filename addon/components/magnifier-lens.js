@@ -49,5 +49,10 @@ export default Component.extend({
         left
       };
     }
-  })
+  }),
+
+  didInsertElement() {
+    this._super(...arguments);
+    this.sendAction('on-lens-insert', this.elementId, this.get('lensDimensions'));
+  }
 });
