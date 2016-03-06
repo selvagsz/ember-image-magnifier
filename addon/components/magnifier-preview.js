@@ -14,12 +14,12 @@ export default TetherComponent.extend({
       let leftPos = - zoomLevel * (this.get('mouseX') - this.get('lensDimensions.width')/2);
       let topPos = - zoomLevel * (this.get('mouseY') - this.get('lensDimensions.height')/2);
 
-      return `
+      return Ember.String.htmlSafe(`
         width: ${zoomedWidth}px;
         height: ${zoomedHeight}px;
         left: ${leftPos}px;
         top: ${topPos}px;
-      `;
+      `);
     }
   })
 });

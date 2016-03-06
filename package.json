@@ -29,7 +29,6 @@
     "ember-cli-release": "0.2.8",
     "ember-cli-sri": "^2.0.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-computed-style": "0.1.2",
     "ember-data": "^2.3.0",
     "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.1",
@@ -43,7 +42,6 @@
   "dependencies": {
     "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-babel": "^5.1.5",
-    "ember-async-image": "0.1.0",
     "ember-computed-style": "0.1.2",
     "ember-tether": "0.2.1"
   },

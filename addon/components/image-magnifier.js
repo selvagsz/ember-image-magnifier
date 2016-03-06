@@ -2,7 +2,7 @@ import Ember from 'ember';
 import layout from '../templates/components/image-magnifier';
 import computedStyle from 'ember-computed-style';
 
-const { Component, computed } = Ember;
+const { Component, computed, run } = Ember;
 
 export default Component.extend({
   layout,
@@ -24,17 +24,42 @@ export default Component.extend({
     }
   }),
 
-  magnifierDimensions: computed('width', 'height', {
+  didInsertElement() {
+    this._super(...arguments);
+    let $image, isCached;
+
+    this.set('imageLoaded', false);
+    run.schedule('afterRender', () => {
+      $image = this.$('img');
+
+      if ($image) {
+        isCached = $image[0].complete;
+
+        if (!isCached) {
+          $image.on('load', () => {
+            this._imageLoaded();
+          });
+        } else {
+          this._imageLoaded();
+        }
+      }
+    });
+  },
+
+  magnifierDimensions: computed('max-width', 'max-height', {
     get() {
+      let maxWidth = this.getWithDefault('max-width', 200);
+      let maxHeight = this.getWithDefault('max-height', 200);
+
       return {
-        width: this.getWithDefault('width', 200),
-        height: this.getWithDefault('height', 250)
+        width: maxWidth,
+        height: maxHeight
       };
     }
   }),
 
-  onImgLoad() {
-    Ember.run.next(() => {
+  _imageLoaded() {
+    run.next(() => {
       this.set('imageLoaded', true);
     });
   },
