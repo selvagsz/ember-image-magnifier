@@ -17,7 +17,7 @@ export default Component.extend({
   _previewerTarget: computed('attachToLens', 'lensId', {
     get() {
       if (this.get('attachToLens')) {
-        return `#${this.get('lensId')}`;
+        return `${this.get('lensId')}`;
       }
 
       return this.get('previewerTarget') || `#${this.elementId}`;
