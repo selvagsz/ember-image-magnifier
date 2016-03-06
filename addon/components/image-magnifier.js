@@ -119,9 +119,12 @@ export default Component.extend({
 
     let mouseX = clientX - target.offsetLeft;
     let mouseY = clientY - target.offsetTop;
+
     this.setProperties({
       mouseX,
-      mouseY
+      mouseY,
+      lensOffsetLeft: event.target.offsetLeft,
+      lensOffsetTop: event.target.offsetTop
     });
   },
 
