@@ -10,6 +10,13 @@ export default TetherComponent.extend({
   classNames: ['magnifier-preview'],
   attributeBindings: ['style'],
   style: computedStyle('previewerDimensions'),
+  constraints: [
+    {
+      to: 'window',
+      attachment: 'together',
+      pin: true
+    }
+  ],
 
   previewerDimensions: computed('previewerWidth', 'previewerHeight', 'magnifierDimensions.{width,height}', {
     get() {
