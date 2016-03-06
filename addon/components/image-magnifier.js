@@ -116,9 +116,9 @@ export default Component.extend({
       clientX = event.clientX;
       clientY = event.clientY;
     }
-
-    let mouseX = clientX - target.offsetLeft;
-    let mouseY = clientY - target.offsetTop;
+    let targetBoundingRect = target.getBoundingClientRect();
+    let mouseX = clientX - targetBoundingRect.left;
+    let mouseY = clientY - targetBoundingRect.top;
 
     this.setProperties({
       mouseX,
