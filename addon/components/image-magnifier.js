@@ -24,6 +24,11 @@ export default Component.extend({
     }
   }),
 
+  init() {
+    this._super(...arguments);
+    this.set('magnifierDimensions', {});
+  },
+
   didInsertElement() {
     this._super(...arguments);
     let $image, isCached;
@@ -46,22 +51,34 @@ export default Component.extend({
     });
   },
 
-  magnifierDimensions: computed('max-width', 'max-height', {
-    get() {
-      let maxWidth = this.getWithDefault('max-width', 200);
-      let maxHeight = this.getWithDefault('max-height', 200);
+  setMagnifierDimensions() {
+    let $image = this.$('img');
+    let imgWidth = $image.width();
+    let imgHeight = $image.height();
+    let maxWidth = this.getWithDefault('width', imgWidth);
+    let maxHeight = this.getWithDefault('height', imgHeight);
+    let width, height;
 
-      return {
-        width: maxWidth,
-        height: maxHeight
-      };
+    let widthRatio = maxWidth / imgWidth;
+    let heightRatio = maxHeight / imgHeight;
+
+    if (heightRatio >= widthRatio) {
+      width = maxWidth;
+      height = imgHeight * widthRatio;
+    } else {
+      width = imgWidth * heightRatio;
+      height = maxHeight;
     }
-  }),
+
+    this.set('magnifierDimensions', {
+      width,
+      height
+    });
+  },
 
   _imageLoaded() {
-    run.next(() => {
-      this.set('imageLoaded', true);
-    });
+    this.set('imageLoaded', true);
+    this.setMagnifierDimensions();
   },
 
   onLensInsert(lensId, lensDimensions) {

@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   background-color: #2EE682;
+  overflow-x: hidden;
 }
 
 *, *::before, *::after {
@@ -15,9 +16,5 @@ html, body {
 }
 
 .magnifier-preview {
-  margin: 0 30px;
-  width: 350px;
-  height: 300px;
   background-color: #333;
-  box-shadow: 1px 1px 1px 1px #aaa;
 }

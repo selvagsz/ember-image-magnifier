@@ -1,12 +1,26 @@
 import Ember from 'ember';
-import TetherComponent from 'ember-tether/components/ember-tether';
 import layout from '../templates/components/magnifier-preview';
+import TetherComponent from 'ember-tether/components/ember-tether';
+import computedStyle from 'ember-computed-style';
+
+const { computed } = Ember;
 
 export default TetherComponent.extend({
   layout,
   classNames: ['magnifier-preview'],
+  attributeBindings: ['style'],
+  style: computedStyle('previewerDimensions'),
 
-  imageDimensions: Ember.computed('mouseX', 'mouseY', 'zoom', 'magnifierDimensions.{width,height}', 'lensDimensions.{width,height}', {
+  previewerDimensions: computed('previewerWidth', 'previewerHeight', 'magnifierDimensions.{width,height}', {
+    get() {
+      return {
+        width: this.getWithDefault('previewerWidth', this.get('magnifierDimensions.width') * 2),
+        height: this.getWithDefault('previewerHeight', this.get('magnifierDimensions.height') * 2)
+      };
+    }
+  }),
+
+  imageDimensions: computed('mouseX', 'mouseY', 'zoom', 'magnifierDimensions.{width,height}', 'lensDimensions.{width,height}', {
     get() {
       let zoomLevel = this.get('zoom');
       let zoomedWidth = zoomLevel * this.get('magnifierDimensions.width');
