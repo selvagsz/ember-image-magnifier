@@ -40,7 +40,9 @@
     "ember-try": "~0.0.8"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "image magnifier",
+    "image magnification"
   ],
   "dependencies": {
     "ember-cli-htmlbars": "^1.0.1",
