@@ -1,7 +1,7 @@
 {
   "name": "ember-image-magnifier",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "An ember addon for image magnifier component",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,11 +11,14 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/selvagsz/ember-image-magnifier.git",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": {
+    "name": "selvagsz",
+    "email": "selvaganesh.b@zohocorp.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
@@ -46,6 +49,7 @@
     "ember-tether": "0.2.1"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "demoURL": "http://selvagsz.github.io/#/demos/magnifier"    
   }
 }

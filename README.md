@@ -1,6 +1,8 @@
-# Ember-image-magnifier
+# image-magnifier
 
-This README outlines the details of collaborating on this Ember addon.
+An ember add for image magnification
+
+[DEMO](http://selvagsz.github.io/#/demos/magnifier)
 
 ## Usage
 
@@ -8,7 +10,12 @@ This README outlines the details of collaborating on this Ember addon.
 
   {{image-magnifier
     src="http://lorempixel.com/image_output/nightlife-q-c-200-200-8.jpg"
-    preview-src="http://lorempixel.com/image_output/nightlife-q-c-500-500-8.jpg"}}
+    preview-src="http://lorempixel.com/image_output/nightlife-q-c-500-500-8.jpg"
+    zoom=4
+    attachToLens=true
+    previewerAttachment="top left"
+    previewerTargetAttachment="top right"
+    previewerTargetOffset="0 20"}}
 
 ```
 
