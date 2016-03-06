@@ -50,6 +50,6 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "demoURL": "http://selvagsz.github.io/#/demos/magnifier"    
+    "demoURL": "http://selvagsz.github.io/#/demos/magnifier"
   }
 }
