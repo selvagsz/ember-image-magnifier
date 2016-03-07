@@ -28,7 +28,7 @@ test('Magnifier preview is attached when hovered and removed on mouse leave', fu
     {{image-magnifier
       width=200
       src=image_226x150_in_base64
-      preview-src=image_226x150_in_base64}}
+      previewSrc=image_226x150_in_base64}}
   `);
 
   this.$('.image-magnifier').trigger('mouseenter');
@@ -43,7 +43,7 @@ test('Preview is attached to lens, when `attachToLens` option is set to `true`',
     {{image-magnifier
       width=200
       src=image_226x150_in_base64
-      preview-src=image_226x150_in_base64}}
+      previewSrc=image_226x150_in_base64}}
   `);
 
   this.$('.image-magnifier').trigger('mouseenter');
@@ -55,7 +55,7 @@ test('Preview is attached to lens, when `attachToLens` option is set to `true`',
       width=200
       attachToLens=true
       src=image_226x150_in_base64
-      preview-src=image_226x150_in_base64}}
+      previewSrc=image_226x150_in_base64}}
   `);
   this.$('.image-magnifier').trigger('mouseenter');
   assert.ok(this.$('.magnifier-lens').hasClass('ember-tether-target'), 'Preview is attached to the lens');
@@ -66,7 +66,7 @@ test('Previewer default width is twice the thumbnail width', function(assert) {
     {{image-magnifier
       width=200
       src=image_226x150_in_base64
-      preview-src=image_226x150_in_base64}}
+      previewSrc=image_226x150_in_base64}}
   `);
 
   this.$('.image-magnifier').trigger('mouseenter');
@@ -80,7 +80,7 @@ test('Previewer Image width is based on the provided zoom level', function(asser
       width=200
       zoom=4
       src=image_226x150_in_base64
-      preview-src=image_226x150_in_base64}}
+      previewSrc=image_226x150_in_base64}}
   `);
 
   this.$('.image-magnifier').trigger('mouseenter');

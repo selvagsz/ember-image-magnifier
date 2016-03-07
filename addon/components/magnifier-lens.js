@@ -10,11 +10,11 @@ export default Component.extend({
   attributeBindings: ['style'],
   style: computedStyle('lensDimensions', 'lensPos'),
 
-  lensDimensions: computed('magnifierDimensions.{width,height}', {
+  lensDimensions: computed('lensWidth', 'lensHeight', 'magnifierDimensions.{width,height}', {
     get() {
       return {
-        width: 0.25 * this.get('magnifierDimensions.width'),
-        height: 0.3 * this.get('magnifierDimensions.height')
+        width: this.getWithDefault('lensWidth', 0.25 * this.get('magnifierDimensions.width')),
+        height: this.getWithDefault('lensHeight', 0.3 * this.get('magnifierDimensions.height'))
       };
     }
   }),

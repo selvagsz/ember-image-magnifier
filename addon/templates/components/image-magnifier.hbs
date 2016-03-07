@@ -4,6 +4,8 @@
   {{#if showLens}}
     {{magnifier-lens
       src=src
+      lensWidth=lensWidth
+      lensHeight=lensHeight
       magnifierDimensions=magnifierDimensions
       mouseX=mouseX
       mouseY=mouseY
@@ -13,7 +15,7 @@
 
 {{#if showPreview}}
   {{magnifier-preview
-    src=preview-src
+    src=previewSrc
     previewerWidth=previewerWidth
     previewerHeight=previewerHeight
     target=_previewerTarget

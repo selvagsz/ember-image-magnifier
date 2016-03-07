@@ -10,7 +10,7 @@ An ember add for image magnification
 
   {{image-magnifier
     src="http://lorempixel.com/image_output/nightlife-q-c-200-200-8.jpg"
-    preview-src="http://lorempixel.com/image_output/nightlife-q-c-500-500-8.jpg"
+    previewSrc="http://lorempixel.com/image_output/nightlife-q-c-500-500-8.jpg"
     zoom=4
     attachToLens=true
     previewerAttachment="top left"

@@ -20,7 +20,7 @@ test('component renders', function(assert) {
   this.render(hbs`
     {{image-magnifier
       src=image_226x150_in_base64
-      preview-src=image_226x150_in_base64}}
+      previewSrc=image_226x150_in_base64}}
   `);
 
   assert.equal(this.$().text().trim(), '');
@@ -32,7 +32,7 @@ test('magnifier component preserves the image aspect ratio, when dimensions are 
     {{image-magnifier
       width=200
       src=image_226x150_in_base64
-      preview-src=image_226x150_in_base64}}
+      previewSrc=image_226x150_in_base64}}
   `);
 
   assert.equal(this.$('img').width(), 200, 'Image rendered with specified width');

@@ -27,7 +27,7 @@ test('lens is attached on mouseEnter and removed on mouseLeave', function(assert
   this.render(hbs`
     {{image-magnifier
       src=image_226x150_in_base64
-      preview-src=image_226x150_in_base64}}
+      previewSrc=image_226x150_in_base64}}
   `);
 
   this.$('.image-magnifier').trigger('mouseenter');
@@ -42,7 +42,7 @@ test('Lens dimensions are calculated based on thumbnail dimensions', function(as
     {{image-magnifier
       width=200
       src=image_226x150_in_base64
-      preview-src=image_226x150_in_base64}}
+      previewSrc=image_226x150_in_base64}}
   `);
 
   this.$('.image-magnifier').trigger('mouseenter');
