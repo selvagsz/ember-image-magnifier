@@ -10,11 +10,11 @@ export default Component.extend({
   attributeBindings: ['style'],
   style: computedStyle('lensDimensions', 'lensPos'),
 
-  lensDimensions: computed('lensWidth', 'lensHeight', 'magnifierDimensions.{width,height}', {
+  lensDimensions: computed('lensWidth', 'lensHeight', {
     get() {
       return {
-        width: this.getWithDefault('lensWidth', 0.25 * this.get('magnifierDimensions.width')),
-        height: this.getWithDefault('lensHeight', 0.3 * this.get('magnifierDimensions.height'))
+        width: this.get('lensWidth'),
+        height: this.get('lensHeight')
       };
     }
   }),
@@ -30,15 +30,19 @@ export default Component.extend({
       if ($element) {
         let $width = $element.clientWidth;
         let $height = $element.clientHeight;
+        // $element has inline style values alone, hence used `this.$().css()` to get borderWidth
+        let $borderWidth = parseInt(this.$().css('border-width'), 10);
 
         if ((mouseX + $width/2) > this.get('magnifierDimensions.width')) {
-          left = this.get('magnifierDimensions.width') - $width;
+          // leftBorder + rightBorder width = 2 * borderWidth
+          left = this.get('magnifierDimensions.width') - $width - (2 * $borderWidth);
         } else {
           left = ((mouseX - $width/2) < 0) ? 0 : (mouseX - $width/2);
         }
 
         if ((mouseY + $height/2) > this.get('magnifierDimensions.height')) {
-          top = this.get('magnifierDimensions.height') - $height;
+          // topBorder + bottomBorder width = 2 * borderWidth
+          top = this.get('magnifierDimensions.height') - $height - (2 * $borderWidth);
         } else {
           top = ((mouseY - $height/2) < 0) ? 0 : (mouseY - $height/2);
         }
