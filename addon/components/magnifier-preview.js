@@ -18,11 +18,11 @@ export default TetherComponent.extend({
     }
   ],
 
-  previewerDimensions: computed('previewerWidth', 'previewerHeight', 'magnifierDimensions.{width,height}', {
+  previewerDimensions: computed('previewerWidth', 'previewerHeight', {
     get() {
       return {
-        width: this.getWithDefault('previewerWidth', this.get('magnifierDimensions.width') * 2),
-        height: this.getWithDefault('previewerHeight', this.get('magnifierDimensions.height') * 2)
+        width: this.get('previewerWidth'),
+        height: this.get('previewerHeight')
       };
     }
   }),
@@ -32,8 +32,8 @@ export default TetherComponent.extend({
       let zoomLevel = this.get('zoom');
       let zoomedWidth = zoomLevel * this.get('magnifierDimensions.width');
       let zoomedHeight = zoomLevel * this.get('magnifierDimensions.height');
-      let leftPos = - zoomLevel * this.get('lensOffsetLeft');
-      let topPos = - zoomLevel * this.get('lensOffsetTop');
+      let leftPos = - zoomLevel * (this.get('lensOffsetLeft'));
+      let topPos = - zoomLevel * (this.get('lensOffsetTop'));
 
       return Ember.String.htmlSafe(`
         width: ${zoomedWidth}px;

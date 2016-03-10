@@ -37,15 +37,17 @@ test('lens is attached on mouseEnter and removed on mouseLeave', function(assert
   assert.ok(!this.$('.magnifier-lens').length, 'Lens is removed on mouse leave');
 });
 
-test('Lens dimensions are calculated based on thumbnail dimensions', function(assert) {
+test('Lens dimensions are calculated based on Previewer dimensions and zoom', function(assert) {
   this.render(hbs`
     {{image-magnifier
-      width=200
+      previewerWidth=200
+      previewerHeight=100
+      zoom=5
       src=image_226x150_in_base64
       previewSrc=image_226x150_in_base64}}
   `);
 
   this.$('.image-magnifier').trigger('mouseenter');
-  assert.equal(this.$('.magnifier-lens').css('width'), '50px', 'Lens width is 0.25 times of thumbnail width');
-  assert.equal(this.$('.magnifier-lens').css('height'), '40px', 'Lens width is 0.3 times of thumbnail height');
+  assert.equal(this.$('.magnifier-lens').css('width'), '40px', 'Lens width is Previewer width divided by zoom');
+  assert.equal(this.$('.magnifier-lens').css('height'), '20px', 'Lens height is Previewer height divided by zoom');
 });

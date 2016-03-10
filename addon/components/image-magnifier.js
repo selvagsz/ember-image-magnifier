@@ -23,6 +23,14 @@ export default Component.extend({
       return this.get('previewerTarget') || `#${this.elementId}`;
     }
   }),
+  
+  lensWidth: computed('zoom', 'previewerWidth', function () {
+    return this.get('previewerWidth') / this.get('zoom');
+  }),
+  
+  lensHeight: computed('zoom', 'previewerHeight', function () {
+    return  this.get('previewerHeight') / this.get('zoom');
+  }),
 
   init() {
     this._super(...arguments);
@@ -70,15 +78,32 @@ export default Component.extend({
       height = maxHeight;
     }
 
+    // To set the default value for previewer
+    let imgRatio = imgWidth / imgHeight;
+    this.set('imgRatio', imgRatio);
+
     this.set('magnifierDimensions', {
       width,
       height
     });
   },
+  
+  setPreviewerDimensions() {
+    // Sets default value for previewer width and height
+    if(!this.get('previewerWidth')) {
+      this.set('previewerWidth', this.get('magnifierDimensions.width'));
+    }
+    if(!this.get('previewerHeight')) {
+      let previewerHeight = this.get('previewerWidth') / this.get('imgRatio');
+      this.set('previewerHeight', previewerHeight);
+    }
+
+  },
 
   _imageLoaded() {
     this.set('imageLoaded', true);
     this.setMagnifierDimensions();
+    this.setPreviewerDimensions();
   },
 
   onLensInsert(lensId, lensDimensions) {

@@ -61,7 +61,7 @@ test('Preview is attached to lens, when `attachToLens` option is set to `true`',
   assert.ok(this.$('.magnifier-lens').hasClass('ember-tether-target'), 'Preview is attached to the lens');
 });
 
-test('Previewer default width is twice the thumbnail width', function(assert) {
+test('Previewer default width is same as the thumbnail width', function(assert) {
   this.render(hbs`
     {{image-magnifier
       width=200
@@ -70,8 +70,7 @@ test('Previewer default width is twice the thumbnail width', function(assert) {
   `);
 
   this.$('.image-magnifier').trigger('mouseenter');
-  assert.equal($('.magnifier-preview').css('width'), '400px', 'Preview width is twice the thumbnail width by default');
-  assert.equal($('.magnifier-preview').css('height'), '265px', 'Preview height is twice the thumbnail height by default');
+  assert.equal($('.magnifier-preview').css('width'), '200px', 'Preview width is same as the thumbnail width by default');
 });
 
 test('Previewer Image width is based on the provided zoom level', function(assert) {
